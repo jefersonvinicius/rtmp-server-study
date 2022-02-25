@@ -1,0 +1,36 @@
+
+.video-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-preview {
+  width: 900px;
+  height: 500px;
+  background-color: #999;
+  border-radius: 5px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10px
+} 
+
+.stream-controller {
+  background-color: rgb(73, 73, 151);
+  border: none;
+  width: 80px;
+  height: 80px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.stream-controller:hover {
+  cursor: pointer;
+
+}
