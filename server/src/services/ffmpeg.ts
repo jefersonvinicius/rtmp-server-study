@@ -18,16 +18,15 @@ export class FFMPEG {
 
     const filePath = `${VIDEOS_PATH}/${streamId}.webm`;
     const command = `
-      ffmpeg -re -i ${filePath} -c:v libx264 -preset veryfast -b:v 3000k -maxrate 3000k \
-      -bufsize 6000k -pix_fmt yuv420p -g 50 -c:a aac -b:a 160k -ac 2 \
-      -ar 44100 -f flv rtmp://localhost/live/${streamId}
+    ffmpeg -re -i ${filePath} -c:v libx264 -preset veryfast -tune zerolatency -c:a aac -ar 44100 -f flv rtmp://localhost/live/${streamId}
     `;
     console.log(`Starting stream to ${streamId}`);
     this.streamsControls.set(streamId, true);
-    exec(command, (error, stdout, stderr) => {
+    exec(command, (error) => {
+      console.log(`Stream ${streamId} finished `);
+      this.streamsControls.set(streamId, false);
       if (error) {
         console.log(error);
-        this.streamsControls.set(streamId, false);
         return;
       }
     });
