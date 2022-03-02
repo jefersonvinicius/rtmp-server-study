@@ -27,7 +27,7 @@ export class WebSocketServerHandler {
       } else if (this.sockets.has(socket.id)) {
         file = this.sockets.get(socket.id)!.fileStream;
         if (!file.writable) {
-          file = fs.createWriteStream(videoPath);
+          file = fs.createWriteStream(videoPath, { flags: 'w' });
           this.sockets.set(socket.id, { ref: socket, fileStream: file });
         }
       }

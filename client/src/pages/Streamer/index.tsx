@@ -13,10 +13,7 @@ export default function Streamer() {
 
   useEffect(() => {
     socket.current = io('http://localhost:3333');
-    socket.current.once('connect', () => {
-      console.log(socket.current!.id);
-      setStreamId(socket.current!.id);
-    });
+    socket.current.once('connect', () => setStreamId(socket.current!.id));
     const _socket = socket.current;
     return () => {
       _socket.disconnect();
@@ -61,7 +58,7 @@ export default function Streamer() {
       <div className="video-box">
         <video className="video-preview" ref={videoElement} autoPlay />
       </div>
-      <div className="footer" style={{ width: videoElement.current?.style.width }}>
+      <div className="footer">
         <button onClick={handleStartStreaming} className="stream-controller">
           {isStreaming ? 'Parar' : 'Iniciar'}
         </button>

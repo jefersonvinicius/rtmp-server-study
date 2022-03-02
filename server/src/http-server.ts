@@ -12,8 +12,9 @@ const webSocketServer = new Server(httpServer, {
     origin: '*',
   },
 });
+app.use(cors({ origin: '*' }));
+app.use('/lives', express.static('videos'));
 app.use(express.json());
-app.use(cors());
 app.use(routes);
 
 const handler = new WebSocketServerHandler();

@@ -18,7 +18,7 @@ export class FFMPEG {
 
     const filePath = `${VIDEOS_PATH}/${streamId}.webm`;
     const command = `
-    ffmpeg -re -i ${filePath} -c:v libx264 -preset veryfast -tune zerolatency -c:a aac -ar 44100 -f flv rtmp://localhost/live/${streamId}
+      ffmpeg -re -i ${filePath} -c:v libx264 -preset veryfast -tune zerolatency -c:a aac -ar 44100 -f flv rtmp://localhost/live/${streamId}
     `;
     console.log(`Starting stream to ${streamId}`);
     this.streamsControls.set(streamId, true);
